@@ -1,156 +1,142 @@
-import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  KeyboardAvoidingView,
-  TextInput,
-  TouchableOpacity,
-  Animated,
-  Keyboard
-} from 'react-native';
+import React, { useState } from 'react';
+import { View, SafeAreaView, StyleSheet, Image, ScrollView, Animated } from 'react-native';
 
 export default function App() {
-
-  const [offset] = useState(new Animated.ValueXY({ x: 0, y: 95 }));
-  const [opacity] = useState(new Animated.Value(0));
-  const [logo] = useState(new Animated.ValueXY({ x: 130, y: 155 }));
-
-  useEffect(() => {
-
-    const KeyboardDidShowListener = Keyboard.addListener('keyboardDidShow', KeyboardDidShow);
-    const KeyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
-
-    Animated.parallel([
-      Animated.spring(offset.y, {
-        toValue: 0,
-        speed: 4,
-        bounciness: 30
-      }).start(),
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 200
-      })
-    ]).start();
-
-  }, []);
-
-  function KeyboardDidShow() {
-    //console.log('teclado aberto');
-    Animated.parallel([
-      Animated.timing(logo.x, {
-        toValue: 55,
-        duration: 100,
-      }),
-      Animated.timing(logo.y, {
-        toValue: 65,
-        duration: 100,
-      })
-    ]).start();
-  }
-
-  function keyboardDidHide() {
-    //console.log('teclado fechado');
-    Animated.parallel([
-      Animated.timing(logo.x, {
-        toValue: 130,
-        duration: 100,
-      }),
-      Animated.timing(logo.y, {
-        toValue: 155,
-        duration: 100,
-      })
-    ]).start();
-  }
-
+  const [scrollY, setScrollY] = useState(new Animated.Value(0));
   return (
-    <KeyboardAvoidingView style={styles.background} behavior='padding'>
-      <View style={styles.containerLogo}>
+    <SafeAreaView >
+      <Animated.View
+        style={[
+          styles.header,
+          {
+            height: scrollY.interpolate({
+              inputRange: [10, 120, 145],
+              outputRange: [100, 10, 0],
+              extrapolate: 'clamp'
+            }),
+            opacity: scrollY.interpolate({
+              inputRange: [1, 80, 170],
+              outputRange: [1, 0.5, 0],
+              extrapolate: 'clamp'
+            })
+          }
+        ]}
+      >
+        <Image
+          source={require('./assets/logo.png')}
+          style={{ width: 30, height: 30 }}
+          resizeMode="contain"
+        />
         <Animated.Image
+          source={require('./assets/logo.png')}
           style={{
-            width: logo.x,
-            height: logo.y
+            width: scrollY.interpolate({
+              inputRange: [0, 120],
+              outputRange: [230, 90],
+              extrapolate: 'clamp'
+            }),
+            height: 50
           }}
-          source={require("./assets/logo.png")} />
-      </View>
-
-      <Animated.View style={[styles.container,
-      {
-        opacity: opacity,
-        transform: [
-          { translateY: offset.y }
-        ]
-      }
-      ]}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          autoCorrect={false}
-          onChangeText={() => { }}
+          resizeMode="contain"
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          autoCorrect={false}
-          onChangeText={() => { }}
+        <Image
+          source={require('./assets/logo.png')}
+          style={{ width: 30, height: 30 }}
+          resizeMode="contain"
         />
-
-        <TouchableOpacity style={styles.btnSubmit}>
-          <Text style={styles.submitText}>Acessar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnRegister}>
-          <Text style={styles.registerText}>Criar conta gratuita</Text>
-        </TouchableOpacity>
-
       </Animated.View>
-    </KeyboardAvoidingView>
+
+      <ScrollView
+        scrollEventThrottle={16}
+        onScroll={Animated.event([{
+          nativeEvent: {
+            contentOffset: { y: scrollY }
+          },
+        }],
+          { useNativeDriver: false })}
+      >
+
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+        <View style={styles.box}></View>
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
+  header: {
+    backgroundColor: '#101010',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#191919',
+    justifyContent: 'space-between',
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: '#FFF'
   },
-  containerLogo: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: "center",
-    width: '90%',
-    paddingBottom: 50
-  },
-  input: {
-    backgroundColor: '#FFF',
-    width: '90%',
-    marginBottom: 15,
-    color: '#222',
-    fontSize: 17,
-    borderRadius: 7,
-    padding: 10
-  },
-  btnSubmit: {
-    backgroundColor: '#35AAFF',
-    width: '90%',
-    height: 45,
-    alignItems: 'center',
-    justifyContent: "center",
-    borderRadius: 7
-  },
-  submitText: {
-    color: '#FFF',
-    fontSize: 18
-  },
-  btnRegister: {
-    marginTop: 10,
-  },
-  registerText: {
-    color: '#FFF'
+  box: {
+    height: 80,
+    backgroundColor: '#DDD',
+    margin: 7,
+    borderRadius: 5
   }
 });
