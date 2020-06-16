@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { View, SafeAreaView, StyleSheet, Image, ScrollView, Animated } from 'react-native';
+import Constants from 'expo-constants';
+import Lista from './src/pages/Lista';
 
 export default function App() {
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   return (
-    <SafeAreaView >
+    <SafeAreaView style={styles.container}>
       <Animated.View
         style={[
           styles.header,
           {
             height: scrollY.interpolate({
               inputRange: [10, 120, 145],
-              outputRange: [100, 10, 0],
+              outputRange: [80, 10, 0],
               extrapolate: 'clamp'
             }),
             opacity: scrollY.interpolate({
@@ -35,7 +37,7 @@ export default function App() {
               outputRange: [230, 90],
               extrapolate: 'clamp'
             }),
-            height: 50
+            height: 40
           }}
           resizeMode="contain"
         />
@@ -47,6 +49,7 @@ export default function App() {
       </Animated.View>
 
       <ScrollView
+        style={{ backgroundColor: '#fff' }}
         scrollEventThrottle={16}
         onScroll={Animated.event([{
           nativeEvent: {
@@ -56,66 +59,8 @@ export default function App() {
           { useNativeDriver: false })}
       >
 
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
+        {/* <View style={styles.box}></View> */}
+        <Lista />
 
       </ScrollView>
     </SafeAreaView>
@@ -123,6 +68,11 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#101010',
+  },
   header: {
     backgroundColor: '#101010',
     flexDirection: 'row',
@@ -131,7 +81,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingLeft: 10,
     borderBottomWidth: 2,
-    borderBottomColor: '#FFF'
+    borderBottomColor: '#FFF',
   },
   box: {
     height: 80,

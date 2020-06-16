@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 
-import ListItem from './src/components/ListItem';
+import ListItem from '../components/ListItem';
 
 export default function App() {
 
@@ -15,11 +15,39 @@ export default function App() {
     { id: '1', tarefa: 'Estudar React Native' },
     { id: '2', tarefa: 'Estudar JavaScript' },
     { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
+    { id: '0', tarefa: 'Comprar Doritos' },
+    { id: '1', tarefa: 'Estudar React Native' },
+    { id: '2', tarefa: 'Estudar JavaScript' },
+    { id: '3', tarefa: 'Se inscrever no canal' },
   ]);
 
   return (
     <View style={styles.container}>
-      <FlatList
+      <FlatList        
         data={tarefas}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) =>
